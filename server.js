@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
+const routes = require('./src/routes');
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.get('/', function(req,res) {
     res.json({message:'Hello Turma'});
 });
 
-mongoose.connect('mongodb://127.0.0.1/test',{
+mongoose.connect('mongodb://127.0.0.1/meubanco',{
     useNewUrlParser: true, 
     useUnifiedTopology: true,
     family: 4,
