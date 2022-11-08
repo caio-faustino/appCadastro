@@ -2,8 +2,9 @@ const express = require('express');
 
 const routes = express.Router();
 
-routes.get('/', function(req,res) {
-    res.json({message:'Hello Turma'});
-});
+const Usuario = require('./controllers/usuarios.controller')
+
+routes.get('/', Usuario.index);
+routes.post('/api/usuarios', Usuario.create);
 
 module.exports = routes;
