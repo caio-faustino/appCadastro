@@ -20,9 +20,16 @@ module.exports = {
         return res.status(500).json(user);
     }
   },
+
   async details(req,res) {
     const {_id} = req.params;
     const user = await Usuario.findOne({_id});
     res.json(user);
+  },
+
+  async delete(req,res) {
+    const { _id } = req.params;
+    const user = await Usuario.findByIdAndDelete({_id});
+    return res.json(user);
   },
 }
