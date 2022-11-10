@@ -13,6 +13,7 @@ import ProdutoCadastrar from './pages/admin/produtos/produtos.cadastrar'
 import Usuarios from './pages/admin/usuarios';
 import UsuarioEditar from './pages/admin/usuarios/usuarios.editar';
 import UsuarioCadastrar from './pages/admin/usuarios/usuarios.cadastrar'
+import Login from './pages/admin/login';
 
 // IMPORTS CLIENT
 import Home from './pages/client/home';
@@ -29,6 +30,7 @@ export default function Routes(){
 
                 {/* Rota Admin */}
                 <Route path="/admin" exact component={Dashboard} />
+                <Route path="/admin/login" exact component={Login} />
 
                 <Route path="/admin/produtos" exact component={Produtos} />
                 <Route path="/admin/produtos/cadastrar" exact component={ProdutoCadastrar} />
