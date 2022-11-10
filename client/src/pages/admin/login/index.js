@@ -3,10 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-// import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
@@ -14,8 +11,15 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import api from '../../../services/api';
-
 import {setNomeUsuario, login, setIdUsuario, setTipoUsuario } from '../../../services/auth';
+
+import IconButton from '@mui/material/IconButton';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 function Copyright(props) {
   return (
@@ -36,8 +40,7 @@ export default function SignIn() {
 
 const [ email, setEmail ] = useState('');
 const [ senha, setSenha ] = useState('');
-
-
+const [ showPassword, setShowPassword ] = useState(false);
 
 
 async function handleSubmit(){
@@ -93,7 +96,7 @@ async function handleSubmit(){
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-            <TextField
+            {/* <TextField
               margin="normal"
               required
               fullWidth
@@ -104,7 +107,27 @@ async function handleSubmit(){
               autoComplete="current-password"
               value={senha}
             onChange={e => setSenha(e.target.value)}
-            />
+            /> */}
+
+        <FormControl fullWidth variant="standard">
+          <InputLabel htmlFor="campoSenha">Digite sua senha</InputLabel>
+          <Input
+            id="campoSenha"
+            type={showPassword ? 'text' : 'password'}
+            value={senha}
+            onChange={e => setSenha(e.target.value)}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={e => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
             
             <Button
               
