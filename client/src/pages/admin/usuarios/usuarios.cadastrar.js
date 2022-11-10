@@ -73,7 +73,7 @@ function DashboardContent() {
             <Grid item sm={12}>
               <Paper sx={{ p: 4 }}>
 
-                <h2>Formulário de cadastro</h2>
+                <h2>Cadastro de Usuarios</h2>
                 <Grid container spacing={3}>
 
                   <Grid item xs={12} sm={12}>

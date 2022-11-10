@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {  BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import {  BrowserRouter, Switch, Route} from 'react-router-dom';
 
 
 // IMPORTS ADMIN
@@ -29,7 +29,7 @@ export default function Routes(){
 
                 {/* Rota Admin */}
                 <Route path="/admin" exact component={Dashboard} />
-                
+
                 <Route path="/admin/produtos" exact component={Produtos} />
                 <Route path="/admin/produtos/cadastrar" exact component={ProdutoCadastrar} />
                 <Route path="/admin/produtos/editar/:idProduto" exact component={ProdutoEditar} />
