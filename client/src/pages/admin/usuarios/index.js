@@ -18,7 +18,9 @@ import api from '../../../services/api';
 
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+
 import Chip from '@mui/material/Chip';
+import {getNomeTipo,getNomeTipoLabel} from '../../../functions/static_data'
 
 
 const mdTheme = createTheme();
@@ -89,7 +91,7 @@ function UsuariosListagem() {
                                 {row.nome_usuario}
                               </TableCell>
                               <TableCell align="center">{row.email_usuario}</TableCell>
-                              <TableCell align="center">{row.tipo_usuario===1?<Chip label="Administrador" color="primary"/>:<Chip label="Funcionario" color="secondary"/>}</TableCell>
+                              <TableCell align="center"><Chip label={getNomeTipo(row.tipo_usuario)} color={getNomeTipoLabel(row.tipo_usuario)}/></TableCell>
                               <TableCell align="center">{new Date(row.createdAt).toLocaleString('pt-br')}</TableCell>
                               <TableCell align="center">
                               <ButtonGroup variant="contained" aria-label="contained button group">
