@@ -8,6 +8,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
+import { getToken, logout } from "../services/auth";
+import api from "../services/api";
+
 export const mainListItems = (
   <React.Fragment>
     <ListItemButton component="a" href="/admin">
@@ -39,7 +42,7 @@ export const secondaryListItems = (
     <ListSubheader component="div" inset>
       Opções
     </ListSubheader>
-    <ListItemButton>
+    <ListItemButton onClick={confirmSair}>
       <ListItemIcon>
         <LogoutRoundedIcon />
       </ListItemIcon>
@@ -48,3 +51,15 @@ export const secondaryListItems = (
   
   </React.Fragment>
 );
+
+async function confirmSair(){
+  if(window.confirm("Deseja realmente sair do sistema?")){
+    const response = await api.get("/api/usuarios/destroytoken",{headers:{token: getToken()}});
+    if(response.status===200){
+      logout();
+      window.location.href = '/admin/login'
+    }else{
+      alert("Não foi possível fazer o logout!");
+    }
+  }
+}
