@@ -9,7 +9,23 @@ import MenuAdmin from '../../../components/menu-admin';
 import ImgAdmin from '../../../assets/img/admin.png';
 import Footer from '../../../components/footer-admin';
 
+import {getTipoUsuario } from '../../../services/auth';
+
+import DashFuncionario from './funcionario';
+import DashGerente from './gerente';
+import DashAdmin from './admin';
+
 const mdTheme = createTheme();
+
+function getDashboard(){
+  if(getTipoUsuario()==='1'){
+    return <DashAdmin />
+  }else if( getTipoUsuario()==='2'){
+    return <DashGerente />
+  }else{
+    return <DashFuncionario />
+  }
+}
 
 function DashboardContent() {
 
@@ -32,7 +48,7 @@ function DashboardContent() {
         >
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              <img src={ImgAdmin} />
+              {getDashboard()}
             </Grid>
             <Footer sx={{ pt: 4 }} />
           </Container>
