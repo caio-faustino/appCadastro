@@ -35,6 +35,17 @@ function UsuariosListagem() {
     loadUsuarios();
   },[]);
 
+  async function handleDelete(id){
+    if(window.confirm("Deseja realmente excluir este usuário?")){
+      var result = await api.delete('/api/usuarios/'+id);
+      if(result.status ===200){
+        window.location.href = '/admin/usuarios';
+      }else{
+        alert('Ocorreu um erro. Por favor, tente novamente!');
+      }
+    }
+  }
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -68,7 +79,7 @@ function UsuariosListagem() {
                           <TableCell align="center">Email</TableCell>
                           <TableCell align="center">Tipo</TableCell>
                           <TableCell align="center">Data de Cadastro</TableCell>
-                          <TableCell align="right">Opções</TableCell>
+                          <TableCell align="center">Opções</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -80,10 +91,10 @@ function UsuariosListagem() {
                               <TableCell align="center">{row.email_usuario}</TableCell>
                               <TableCell align="center">{row.tipo_usuario===1?<Chip label="Administrador" color="primary"/>:<Chip label="Funcionario" color="secondary"/>}</TableCell>
                               <TableCell align="center">{new Date(row.createdAt).toLocaleString('pt-br')}</TableCell>
-                              <TableCell align="right">
+                              <TableCell align="center">
                               <ButtonGroup variant="contained" aria-label="contained button group">
                                 <Button color="primary">Atualizar</Button>
-                                <Button color="error">Excluir</Button>
+                                <Button color="error" onClick={() => handleDelete(row._id)}>Excluir</Button>
                               </ButtonGroup>
                               </TableCell>
                             </TableRow>
