@@ -9,6 +9,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { styled,} from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import CssBaseline from '@mui/material/CssBaseline';
 import { mainListItems, secondaryListItems } from './list-menu-admin';
 
 const drawerWidth = 240;
@@ -57,7 +58,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MenuAdmin(){
+export default function MenuAdmin({title}){
 
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
@@ -67,6 +68,7 @@ export default function MenuAdmin(){
 
   return(
     <>
+      <CssBaseline />
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
@@ -92,7 +94,7 @@ export default function MenuAdmin(){
             noWrap
             sx={{ flexGrow: 1 }}
           >
-            Dashboard
+            {title}
           </Typography>
           
         </Toolbar>

@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -18,7 +17,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
 
-        <MenuAdmin />
+        <MenuAdmin title={'DASHBOARD'} />
         <Box
           component="main"
           sx={{
@@ -38,7 +37,7 @@ function DashboardContent() {
             <Footer sx={{ pt: 4 }} />
           </Container>
         </Box>
-
+        
       </Box>
     </ThemeProvider>
   );
