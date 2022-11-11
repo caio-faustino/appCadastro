@@ -13,8 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-import SaveIcon from '@mui/icons-material/SaveAlt';
-import api from '../../../services/api'
+
+import api from '../../../services/api';
 
 
 const mdTheme = createTheme();
@@ -83,7 +83,7 @@ function DashboardContent() {
                       id="nome"
                       name="nome"
                       label="Nome completo"
-                      fullWidth
+                      sx={{ width: '93%' }}
                       autoComplete="nome"
                       variant="standard"
                       value={nome}

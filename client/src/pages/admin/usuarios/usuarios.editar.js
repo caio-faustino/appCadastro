@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-import SaveIcon from '@mui/icons-material/SaveAlt';
+
 import api from '../../../services/api'
 import Stack from '@mui/material/Stack';
 
@@ -43,7 +43,7 @@ function DashboardContent() {
     }
 
     getUsuario();
-  },[])
+  },[idUsuario])
 
 
   async function handleSubmit(){
