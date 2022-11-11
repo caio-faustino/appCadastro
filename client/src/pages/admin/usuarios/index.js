@@ -69,7 +69,8 @@ function UsuariosListagem() {
             <Grid container spacing={6}>
               
               <Grid item sm={12}>
-              <Paper Paper sx={{ pl: 2 }}>
+              <Button variant="contained" aria-label="contained button group" color="primary" href={'/admin/usuarios/cadastrar'}>Cadastrar</Button>
+              <Paper sx={{ pl: 2 }}>
                 <h2>Listagem de Usuários</h2>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={12}>

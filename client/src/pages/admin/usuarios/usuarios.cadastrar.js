@@ -71,7 +71,8 @@ function DashboardContent() {
           <Container maxWidth="lg" sx={{ mt: 10, mb: 10}}>
           <Grid container spacing={3}>
             <Grid item sm={12}>
-              <Paper sx={{ p: 4 }}>
+            <Button variant="contained" aria-label="contained button group" color="primary" href={'/admin/usuarios'}>Voltar</Button>
+              <Paper sx={{ pl: 2, pb:2 }}>
 
                 <h2>Cadastro de Usuarios</h2>
                 <Grid container spacing={3}>
@@ -130,8 +131,9 @@ function DashboardContent() {
                     />
                   </Grid>
                   <Grid item xs={12} sm={12}>
-                  <Button variant="contained" onClick={handleSubmit}>
-                  <SaveIcon />  Salvar
+                  <Button color='success' variant="contained" aria-label="contained button group" onClick={handleSubmit}>
+                  
+                  Salvar
                   </Button>
                   </Grid>
                 </Grid>

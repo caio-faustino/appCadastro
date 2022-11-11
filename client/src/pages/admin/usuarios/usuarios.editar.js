@@ -15,8 +15,10 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/SaveAlt';
 import api from '../../../services/api'
+import Stack from '@mui/material/Stack';
 
 import { useParams } from 'react-router-dom';
+
 
 
 const mdTheme = createTheme();
@@ -90,7 +92,12 @@ function DashboardContent() {
           <Container maxWidth="lg" sx={{ mt: 10, mb: 10}}>
           <Grid container spacing={3}>
             <Grid item sm={12}>
-              <Paper sx={{ p: 4 }}>
+              <Stack direction="row" spacing={2}>
+                <Button variant="outlined" aria-label="contained button group" color="primary" href={'/admin/usuarios'}>Voltar</Button>
+              <Button variant="contained" aria-label="contained button group" color="primary" href={'/admin/usuarios/cadastrar/'}>Cadastrar</Button>
+              </Stack>
+            
+              <Paper sx={{ pl: 2, pb:2 }}>
 
                 <h2>Atualizar Usuario</h2>
                 <Grid container spacing={3}>
@@ -149,8 +156,9 @@ function DashboardContent() {
                     />
                   </Grid>
                   <Grid item xs={12} sm={12}>
-                  <Button variant="contained" onClick={handleSubmit}>
-                  <SaveIcon />  Salvar
+                  <Button variant="contained" color='success' onClick={handleSubmit}>
+                  
+                  Salvar
                   </Button>
                   </Grid>
                 </Grid>
