@@ -20,6 +20,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 function Copyright(props) {
   return (
@@ -41,10 +43,13 @@ export default function SignIn() {
 const [ email, setEmail ] = useState('');
 const [ senha, setSenha ] = useState('');
 const [ showPassword, setShowPassword ] = useState(false);
+const [ loading, setLoading ] = useState(false);
 
 
 async function handleSubmit(){
         
+  setLoading(true);
+
     await api.post('/api/usuarios/login',{email,senha})
     .then(res => {
         if(res.status===200){
@@ -58,13 +63,23 @@ async function handleSubmit(){
             }else if(res.data.status===2){
                 alert('Atenção: '+res.data.error);
             }
-            // setLoading(false);
+            
+            setLoading(false);
         }else{
             alert('Erro no servidor');
-            // setLoading(false);
+            setLoading(false);
         }
     })
 }
+
+function loadSubmit(){
+  setLoading(true);
+  setTimeout(
+    () => handleSubmit(),
+    1000
+  )
+}
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -109,7 +124,7 @@ async function handleSubmit(){
             onChange={e => setSenha(e.target.value)}
             /> */}
 
-        <FormControl fullWidth variant="standard">
+        <FormControl sx={{ mt: 1, width: '100%' }} variant="standard">
           <InputLabel htmlFor="campoSenha">Digite sua senha</InputLabel>
           <Input
             id="campoSenha"
@@ -134,10 +149,11 @@ async function handleSubmit(){
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={handleSubmit}
-            
+              onClick={loadSubmit}
+              disabled={loading}
             >
-              Entrar
+              {loading?<CircularProgress />:"Entrar"}
+              
             </Button>
             
           </Box>
