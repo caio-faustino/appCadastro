@@ -96,7 +96,7 @@ function UsuariosListagem() {
                               <TableCell align="center">{new Date(row.createdAt).toLocaleString('pt-br')}</TableCell>
                               <TableCell align="center">
                               <ButtonGroup variant="contained" aria-label="contained button group">
-                                <Button color="primary" href={'/admin/usuarios/editar/'+row._id}>Atualizar</Button>
+                                <Button sx={{ mr: 1 }} Buttoncolor="primary" href={'/admin/usuarios/editar/'+row._id}>Atualizar</Button>
                                 <Button color="error" onClick={() => handleDelete(row._id)}>Excluir</Button>
                               </ButtonGroup>
                               </TableCell>
